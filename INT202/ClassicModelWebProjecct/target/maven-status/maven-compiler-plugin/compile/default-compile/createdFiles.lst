@@ -1,0 +1,16 @@
+sit\int202\classicmodel\entity\Offices.class
+sit\int202\classicmodel\entity\TestJpa.class
+sit\int202\classicmodel\resources\JavaEE8Resource.class
+sit\int202\classicmodel\JAXRSConfiguration.class
+sit\int202\classicmodel\dbservice\TestDBConnectionUtility.class
+sit\int202\classicmodel\entity\Orderdetails.class
+sit\int202\classicmodel\dbservice\DBConnectionUtility.class
+sit\int202\classicmodel\entity\Orders.class
+sit\int202\classicmodel\entity\PaymentsPK.class
+sit\int202\classicmodel\entity\Payments.class
+sit\int202\classicmodel\entity\Products.class
+sit\int202\classicmodel\servlet\ProductListServlet.class
+sit\int202\classicmodel\entity\OrderdetailsPK.class
+sit\int202\classicmodel\entity\Productlines.class
+sit\int202\classicmodel\entity\Customers.class
+sit\int202\classicmodel\entity\Employees.class
