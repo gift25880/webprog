@@ -1,0 +1,40 @@
+<html>
+
+<body>
+  <h1>Ajax Example: XML</h1>
+  <button type="button" onclick="loadFile(textToHtml, 'textFile.txt', 'text/plain')">AJAX Text</button>
+  <button type="button" onclick="loadFile(xmlToHtml, 'dataFile.xml', 'text/xml')">AJAX XML</button>
+  <button type="button" onclick="loadFile(jsonToHtml, 'jsonFile.json', 'text/plain')">AJAX JSON</button>
+  <div id="here" />
+  <script>
+    function textToHtml(text) { return text; }
+    function xmlToHtml(xml) {
+      var s = "<p/>";
+      var p = xml.getElementsByTagName("person")[0];
+      for (var n = 0; n < p.childNodes.length; n++) {
+        var c = p.childNodes[n];
+        if (c.nodeType == 1) s += c.tagName + ": " + c.textContent + "<p/>";
+      }
+      return s;
+    }
+    function jsonToHtml(json) {
+      var obj = JSON.parse(json);
+      return obj.specificName + ", " + obj.genericName;
+    }
+    function loadFile(toHtml, url, contentType) {
+      var ajax = new XMLHttpRequest();
+      ajax.onreadystatechange =
+        function () {
+          if (this.readyState == 4 && this.status == 200) {
+            var content = contentType == 'text/xml' ? this.responseXML : this.responseText;
+            document.getElementById("here").innerHTML = toHtml(content);
+          }
+        };
+      ajax.open("GET", url, true);
+      ajax.setRequestHeader("Content-Type", contentType);
+      ajax.send();
+    }
+  </script>
+</body>
+
+</html>
