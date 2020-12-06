@@ -6,26 +6,26 @@
 package sit.int202.classicmodel.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
-import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.PersistenceUnit;
-import javax.persistence.Query;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import sit.int202.classicmodel.entity.Customers;
 import sit.int202.classicmodel.entity.Products;
+import sit.int202.classicmodel.entity.controller.ProductsJpaController;
 
 /**
  *
  * @author INT202
  */
 public class ProductListServlet extends HttpServlet {
+
     @PersistenceUnit(unitName = "sit.int202_ClassicModelWebProjecct_war_1.0-SNAPSHOTPU")
+    EntityManagerFactory emf;
+
+    //EntityManagerFactory emf ;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -37,22 +37,22 @@ public class ProductListServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("sit.int202_ClassicModelWebProjecct_war_1.0-SNAPSHOTPU");
-        EntityManager em = emf.createEntityManager();
-        System.out.println(em);
         String params = request.getParameter("productDescription");
-        if (params == null) {
-            request.getRequestDispatcher("/index.html").forward(request, response);
-        } else {
-            Query q = em.createQuery("select p from Products p where p.productName like :param");
-            q.setParameter("param", "%" + params+ "%");
-            List<Products> products = q.getResultList();
+        params = (params==null ? "" : params);
+//        if (params != null) {
+            ProductsJpaController pCtrl = new ProductsJpaController(emf);
+            List<Products> products = pCtrl.findProductsEntities("%" + params + "%");
             request.setAttribute("products", products);
-            request.getRequestDispatcher("/ProductList.jsp").forward(request, response);
-        }
+//        }
+        request.getRequestDispatcher("/ProductList2View.jsp").forward(request, response);
+//        if ("list".equalsIgnoreCase(request.getParameter("view"))) {
+//            request.getRequestDispatcher("/ProductListView.jsp").forward(request, response);
+//        } else {
+//            request.getRequestDispatcher("/ProductGalleryView.jsp").forward(request, response);
+//        }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

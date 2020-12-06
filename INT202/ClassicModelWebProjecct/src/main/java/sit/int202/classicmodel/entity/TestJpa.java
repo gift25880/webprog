@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import sit.int202.classicmodel.entity.controller.OfficesJpaController;
 
 /**
  *
@@ -31,8 +32,8 @@ public class TestJpa {
 //        Customers c = em.find(Customers.class, 119);
 //        System.out.println(c);
 //        System.out.println("\n---------");
-        //testJPQuery(em);
-        testJPQueryWithParameter(em);
+        testJPQuery(emf);
+        //testJPQueryWithParameter(em);
         em.close();
         emf.close();
     }
@@ -56,10 +57,11 @@ public class TestJpa {
         }
     }
    
-    private static void testJPQuery(EntityManager em) {
+    private static void testJPQuery(EntityManagerFactory emf) {
         //Query q = em.createQuery("select o from Offices o");
-        Query q = em.createNamedQuery("Offices.findAll");
-        List<Offices> offices = q.getResultList();
+        //Query q = em.createNamedQuery("Offices.findAll");
+        OfficesJpaController oCtrlr = new OfficesJpaController(emf);
+        List<Offices> offices = oCtrlr.findOfficesEntities();
         for (Offices office : offices) {
             System.out.println(office.getCity() + " : "+ office.getCountry());
             List<Employees> employees = office.getEmployeesList();

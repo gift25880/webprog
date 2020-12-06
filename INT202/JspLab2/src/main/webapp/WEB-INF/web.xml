@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="4.0" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
+    <servlet>
+        <servlet-name>MyServlet</servlet-name>
+        <servlet-class>sit.int202.jsplab2.servlet.MyServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MulProbServlet</servlet-name>
+        <servlet-class>sit.int202.jsplab2.servlet.MulProbServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MulProbFormServlet</servlet-name>
+        <servlet-class>sit.int202.jsplab2.servlet.MulProbFormServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CheckAnswerServlet</servlet-name>
+        <servlet-class>sit.int202.jsplab2.servlet.CheckAnswerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MyServlet</servlet-name>
+        <url-pattern>/myservlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MulProbServlet</servlet-name>
+        <url-pattern>/mulproblem</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MulProbFormServlet</servlet-name>
+        <url-pattern>/mulproblem2</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CheckAnswerServlet</servlet-name>
+        <url-pattern>/checkanswer</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>

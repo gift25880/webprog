@@ -30,7 +30,7 @@
             <tr>
                 <td style="vertical-align: top"><%=product.getProductCode()%></td>
                 <td style="vertical-align: top"><%=product.getProductName()%></td>
-                <td style="vertical-align: top"><%=product.getProductLine()%></td>
+                <td style="vertical-align: top"><%=product.getProductLine().getProductLine()%></td>
                 <td style='width:40%'><%=product.getProductDescription()%></td>
                 <td style="vertical-align: top"><%=product.getMsrp()%></td>
             </tr>

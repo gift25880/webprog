@@ -26,7 +26,7 @@ public class DBConnectionUtility {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 isLoaded = true;
             }
-            conn = DriverManager.getConnection(URL, "root",  "Gift01210!");
+            conn = DriverManager.getConnection(URL, "root",  "tooRLQSyM");
         } catch (SQLException | ClassNotFoundException ex) {
             System.out.println(ex);
         }
